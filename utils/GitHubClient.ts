@@ -21,13 +21,32 @@ export class GitHubClient {
   async searchUsers(searchQuery) {
     if (!searchQuery) {
       throw new Error(
-        "GitHubClient.searchUsers: Must provide search query parameter"
+        "GitHubClient.searchUsers: Must provide search parameter"
       );
     }
     try {
       const { data } = await this.client.search.users({ q: searchQuery });
-      console.log("GHCLient", data);
       return data.items;
-    } catch (e) {}
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async getUserRepos(username: string) {
+    if (!username) {
+      throw new Error(
+        "GitHubClient.getUserRepos: Must provide username parameter"
+      );
+    }
+    try {
+      const { data } = await this.client.repos.listForUser({
+        type: "owner",
+        username,
+      });
+      console.log("getUserRepos");
+      return data;
+    } catch (e) {
+      throw new Error(e);
+    }
   }
 }
