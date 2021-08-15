@@ -18,3 +18,18 @@ export const Main = styled.main`
   justify-content: center;
   align-items: center;
 `;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const InputWrapper = styled.div`
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 5px;
+  }
+`;
