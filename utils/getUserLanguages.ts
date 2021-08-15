@@ -1,9 +1,8 @@
-import { GitHubClient } from "./GitHubClient";
+import GitHubClient from "./GitHubClient";
 
-const getUserLanguagesCount = async (
+export const getUserLanguagesCount = async (
   username: string
 ): Promise<{ [key: string]: number }> => {
-  console.log("ENV", process.env.NEXT_PUBLIC_API_TOKEN);
   const client = new GitHubClient(process.env.NEXT_PUBLIC_API_TOKEN);
   const languageCount = {};
   try {
@@ -12,7 +11,7 @@ const getUserLanguagesCount = async (
       throw new Error("No repositories for this user");
     }
     for (const repo of repos) {
-      const dominantLanguage = repo.language;
+      const { language: dominantLanguage } = repo;
       if (dominantLanguage) {
         let currentCount =
           dominantLanguage in languageCount
@@ -31,7 +30,7 @@ const getUserLanguagesCount = async (
 
 export const getUserFavouriteLanguage = async (username: string) => {
   if (!username) {
-    throw new Error("getUserLanguages");
+    throw new Error("getUserLanguages: Valid username must be provided");
   }
   try {
     const languagesCount = await getUserLanguagesCount(username);
@@ -39,7 +38,6 @@ export const getUserFavouriteLanguage = async (username: string) => {
     let favLang;
     for (const lang in languagesCount) {
       const langCount = languagesCount[lang];
-      console.log(lang, langCount);
       if (langCount > max) {
         max = langCount;
         favLang = lang;

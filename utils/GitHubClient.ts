@@ -3,7 +3,7 @@ import { Octokit } from "@octokit/rest";
 /**
  * Client used to interact with GitHub
  */
-export class GitHubClient {
+export default class GitHubClient {
   usertoken = "";
   client: Octokit;
 

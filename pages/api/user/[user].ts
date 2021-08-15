@@ -1,4 +1,4 @@
-import { GitHubClient } from "../../../utils/GitHubClient";
+import GitHubClient from "../../../utils/GitHubClient";
 
 export default async function handler(req, res) {
   const { user } = req.query;

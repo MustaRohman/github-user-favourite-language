@@ -19,7 +19,6 @@ export default function Home() {
       }
       setIsLoading(true);
       const data = await getUserFavouriteLanguage(usernameInput);
-      console.log(data);
       setFavLang(data);
       setError("");
       setIsLoading(false);
