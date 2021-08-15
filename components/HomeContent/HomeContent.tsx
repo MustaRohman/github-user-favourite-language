@@ -32,8 +32,10 @@ const HomeContent = () => {
       <Main>
         <Form onSubmit={(e) => onClickHandler(e)}>
           <InputWrapper>
-            <label htmlFor="username-input">GitHub Username:</label>
+            <label id="username-input-label">GitHub Username:</label>
             <input
+              aria-labelledby="username-input-label"
+              id="username-input"
               name="username-input"
               placeholder="Enter Username Here..."
               type="text"
@@ -41,7 +43,7 @@ const HomeContent = () => {
               onChange={(e) => setUsernameInput(e.target.value)}
             />
           </InputWrapper>
-          <button>Load user languages</button>
+          <button type="submit">Load user languages</button>
         </Form>
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}

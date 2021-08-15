@@ -13,6 +13,7 @@
     "@octokit/rest": "^18.9.0",
     "@octokit/types": "^6.25.0",
     "@types/styled-components": "^5.1.12",
+    "jest-styled-components": "^7.0.5",
     "next": "11.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
