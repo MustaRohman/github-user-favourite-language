@@ -8,6 +8,9 @@ const getUserLanguagesCount = async (
   const languageCount = {};
   try {
     const repos = await client.getUserRepos(username);
+    if (repos.length === 0) {
+      throw new Error("No repositories for this user");
+    }
     for (const repo of repos) {
       const dominantLanguage = repo.language;
       if (dominantLanguage) {
@@ -44,7 +47,7 @@ export const getUserFavouriteLanguage = async (username: string) => {
     }
     return favLang;
   } catch (e) {
-    console.log(e);
+    console.log("getUserFavLang", e);
     throw new Error("Unable to calculate favourite language");
   }
 };
