@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/MustaRohman/github-user-favourite-programming-language-/tree/main.svg?style=svg)](https://circleci.com/gh/MustaRohman/github-user-favourite-programming-language-/tree/main)
+[![CircleCI](https://circleci.com/gh/MustaRohman/github-user-favourite-language/tree/main.svg?style=svg)](https://circleci.com/gh/MustaRohman/github-user-favourite-language/tree/main)
 
 A simple user interface 
 
