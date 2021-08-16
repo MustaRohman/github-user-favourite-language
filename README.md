@@ -13,7 +13,7 @@ First, run the development server:
    ```
 3. `cd` into project repository and run `npm install`
 4. Run `npm run dev`
-5.Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 6. Enter GitHub username into text input and press Enter
 
 # Tech Stack
