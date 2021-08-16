@@ -16,22 +16,6 @@ export default class GitHubClient {
     });
   }
 
-  // Add return type
-  // Adapter pattern
-  async searchUsers(searchQuery) {
-    if (!searchQuery) {
-      throw new Error(
-        "GitHubClient.searchUsers: Must provide search parameter"
-      );
-    }
-    try {
-      const { data } = await this.client.search.users({ q: searchQuery });
-      return data.items;
-    } catch (e) {
-      throw new Error(e);
-    }
-  }
-
   async getUserRepos(username: string) {
     if (!username) {
       throw new Error(

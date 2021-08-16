@@ -28,7 +28,9 @@ export const getUserLanguagesCount = async (
   }
 };
 
-export const getUserFavouriteLanguage = async (username: string) => {
+export const getUserFavouriteLanguage = async (
+  username: string
+): Promise<string> => {
   if (!username) {
     throw new Error("getUserLanguages: Valid username must be provided");
   }
