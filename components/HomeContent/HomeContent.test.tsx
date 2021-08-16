@@ -10,6 +10,7 @@ describe("HomeContent", () => {
       .spyOn(GitHubClient.prototype, "getUserRepos")
       .mockReturnValue(new Promise((resolve) => resolve(reposMock)));
   });
+
   it("submitting valid username should result in favourite language rendering", async () => {
     // Arrange
     render(<HomeContent />);
@@ -26,6 +27,18 @@ describe("HomeContent", () => {
     // Assert
     await waitFor(() => screen.getByText("Favourite language is JavaScript"));
   });
-  // Error: failed username lookup should result in user error
-  // Error: Failed repo lookup should result in failed repo lookup
+
+  it("submitting no username should result in an error message being rendered", async () => {
+    // Arrange
+    render(<HomeContent />);
+    const submitButton = screen.getByRole("button", {
+      name: "Load user languages",
+    });
+
+    // Act
+    userEvent.click(submitButton);
+
+    // Assert
+    screen.getByText("Please enter username into input field");
+  });
 });
