@@ -25,6 +25,7 @@ export const Form = styled.form`
 `;
 
 export const InputWrapper = styled.div`
+  width: 400px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -32,4 +33,18 @@ export const InputWrapper = styled.div`
   label {
     margin-bottom: 5px;
   }
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+`;
+
+export interface InputProps {
+  error?: string;
+  success?: string;
+}
+
+export const Input = styled.input<InputProps>`
+  border: 3px solid
+    ${(props) => (props.error ? "red" : props.success ? "green" : "black")};
 `;

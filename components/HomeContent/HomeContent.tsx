@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { getUserFavouriteLanguage } from "../../utils/getUserLanguages";
-import { Form, InputWrapper, Main, Wrapper } from "./HomeContent.styles";
+import ErrorMessage from "../ErrorMessage";
+import { Form, Input, InputWrapper, Main, Wrapper } from "./HomeContent.styles";
 
 const HomeContent = () => {
   const [error, setError] = useState("");
@@ -13,6 +14,7 @@ const HomeContent = () => {
     try {
       if (!usernameInput) {
         setError("Please enter username into input field");
+        setFavLang("");
         return;
       }
       setIsLoading(true);
@@ -30,10 +32,11 @@ const HomeContent = () => {
   return (
     <Wrapper>
       <Main>
+        {error && <ErrorMessage message={error} />}
         <Form onSubmit={(e) => onClickHandler(e)}>
           <InputWrapper>
             <label id="username-input-label">GitHub Username:</label>
-            <input
+            <Input
               aria-labelledby="username-input-label"
               id="username-input"
               name="username-input"
@@ -41,12 +44,15 @@ const HomeContent = () => {
               type="text"
               value={usernameInput}
               onChange={(e) => setUsernameInput(e.target.value)}
+              error={error}
+              success={favLang}
             />
           </InputWrapper>
-          <button type="submit">Load user languages</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Loading..." : "Load user languages"}
+          </button>
         </Form>
         {isLoading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
         {favLang && <p>Favourite language is {favLang}</p>}
       </Main>
     </Wrapper>
